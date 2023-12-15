@@ -1,0 +1,19 @@
+{
+  "name": "ashan-code-blog",
+  "version": "1.0.0",
+  "description": "blog management system",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.2.0",
+    "mongoose": "^8.0.3"
+   
+
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ashan Khan",
+  "license": "ISC"
+}
