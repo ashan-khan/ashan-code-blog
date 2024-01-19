@@ -1,0 +1,36 @@
+<%- include("./layouts/header") %>
+<%- include("./layouts/navbar") %>
+<section class="services" id="services">
+    <div class="main-text">
+        <h2>Blog Setup</h2>
+        <h4>Let create the blog</h4>
+    </div>
+     
+
+    <div class="contact-form">
+        <form action="" method="POST" enctype="multipart/form-data" id="my-form">
+            <input type="text" name="blog_title" placeholder="Enter Your Blog Title" required>
+            <input type="file" id="file" name="blog_image" placeholder="Enter the blog image">
+            <textarea name="description" id="" cols="40" rows="10" placeholder="Enter blog descripotion" required></textarea>
+            <!-- <a class="send" href="https://formsubmit.co/el/kicuyu" target="_blank">Email us</a> -->
+            <input type="text" name="name" placeholder="Enter Admin Name" required>
+			<input type="email" name="email" id="email" placeholder="Enter Admin Email" required>
+			<input type="password" name="password" id="password" placeholder="Enter your password" required>
+            <input type="submit" value="Let, Create the Blog" class="send">
+            <p id="my-form-status"></p>
+            <!-- <button type="submit" class="send" >Submit</button> -->
+        </form>
+    </div>
+
+</section>
+
+<%
+    if(typeof message !== 'undefined'){
+        %>
+        <p><%= message %></p>
+        <%
+    }
+%>
+
+<%- include("./layouts/footer") %>
+
