@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 
-adminRoute.get('/login', adminController.login )
+// adminRoute.get('/login', adminController.login )
 adminRoute.get('/blog-setup', adminController.blogSetup);
 adminRoute.post('/blog-setup', upload.single('blog_image'), adminController.blogSetupSave);
 

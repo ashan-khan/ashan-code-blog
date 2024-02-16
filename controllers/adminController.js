@@ -1,6 +1,6 @@
 const express = require('express');
 const blogSetting = require('../modules/blogSettingModel');// will in login route
-const User = require('../modules/userModel')
+const user = require('../modules/userModel')
 const adminRoute = require('../routes/adminRoutes');
 const bcrypt = require('bcrypt')// it is used in password encryption
 
@@ -12,15 +12,15 @@ const securePassword = async (password)=>{
         console.log(error.message)
     }
 }
-const login = async (req, res)=>{
-    res.send('Login or SignUp')
-}
+// const login = async (req, res)=>{
+//     res.send('Login or SignUp')
+// }
 const blogSetup = async (req, res)=>{
    try {
     
-    let blogsetting = await blogSetting.find()
+    let blogsetting = await blogSetting.find({})
     if(blogsetting.length > 0){
-        res.redirect('/login')
+        // res.redirect('/login')
     }else{
         res.render('blogSetup')
     }
@@ -36,17 +36,17 @@ const blogSetupSave = async (req, res)=>{
      const blog_description =  req.body.description;
      const name =  req.body.name;
      const email =  req.body.email;
-     const password = securePassword(req.body.password)
-
-     const blogSetting = new blogSetting({
+     const password = await securePassword(req.body.password)
+    //  const password = req.body.password;
+     const BlogSetting = new blogSetting({
         blog_title: blog_title,
         blog_logo: blog_image,
         blog_description: blog_description
 
      })
-     await blogSetting.save();
+     await BlogSetting.save();
 
-     const User =new User({
+     const User =new user({
         name:name,
         email:email,
         password:password,
@@ -54,7 +54,7 @@ const blogSetupSave = async (req, res)=>{
      })
      const userData =await User.save();
      if(userData){
-        res.redirect('/login')
+        // res.redirect('/login')
      }else{
         res.render('blogsetup',{message: 'blog not setup properly'})
      }
@@ -64,7 +64,7 @@ const blogSetupSave = async (req, res)=>{
     }
 }
 module.exports = {
-    login,
+    // login,
     blogSetup,
     blogSetupSave
 }
