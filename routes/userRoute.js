@@ -21,5 +21,5 @@ userRoute.use(express.static(__dirname+'/public'));
 userRoute.get('/login', userController.loadLogin )
 userRoute.post('/login', userController.verifyLogin )
 
-userRoute.get('/profile', userController.profile)
+userRoute.get('/profile', userController.profile) 
 module.exports = userRoute;
