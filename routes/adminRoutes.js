@@ -36,5 +36,6 @@ const upload = multer({storage: storage});
 adminRoute.get('/blog-setup', adminController.blogSetup);
 adminRoute.post('/blog-setup', upload.single('blog_image'), adminController.blogSetupSave);
 
+adminRoute.get('/dashboard', adminController.dashboard);
 
 module.exports = adminRoute;

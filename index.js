@@ -17,6 +17,10 @@ app.use(isBlog.isBlog)
 const adminRoute = require('./routes/adminRoutes')
 app.use('/', adminRoute) 
 
+// For User Routes
+const userRoute = require('./routes/userRoute')
+app.use('/', userRoute) 
+
 // specify public directory form to surve sta tic fies
 
 

@@ -1,0 +1,29 @@
+<%- include("./layouts/header") %>
+<%- include("./layouts/navbar") %>
+<section class="services" id="services">
+    <div class="main-text">
+        <h2>Blog Setup</h2>
+        <h4>Login to your account</h4>
+    </div>
+     <% 
+        if(typeof message !== 'undefined'){
+            %>
+            <p><%= message %></p>
+            <%
+        }
+    %>
+
+    <div class="login-form">
+        <form action="" method="POST" id="my-form">
+           
+			<input type="email" name="email" id="email" placeholder="Enter Admin Email" required>
+			<input type="password" name="password" id="password" placeholder="Enter your password" required>
+            <input type="submit" value="Login" class="send">
+            <p id="my-form-status"></p>
+         
+        </form>
+    </div>
+
+</section>
+
+<%- include("./layouts/footer") %>

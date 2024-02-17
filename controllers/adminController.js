@@ -52,9 +52,9 @@ const blogSetupSave = async (req, res)=>{
         password:password,
         isAdmin: 1
      })
-     const userData =await User.save();
+     const userData = await User.save();
      if(userData){
-        // res.redirect('/login')
+         res.redirect('/login')
      }else{
         res.render('blogsetup',{message: 'blog not setup properly'})
      }
@@ -63,8 +63,15 @@ const blogSetupSave = async (req, res)=>{
         console.log(error.message);
     }
 }
+const dashboard = async (req, res)=>{
+    try {
+        res.send('hii your dashboard is here')
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 module.exports = {
-    // login,
+    dashboard,
     blogSetup,
     blogSetupSave
 }
