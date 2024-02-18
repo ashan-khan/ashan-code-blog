@@ -30,5 +30,9 @@ userRoute.get('/login',adminLoginAuth.isLogout, userController.loadLogin )
 userRoute.post('/login', userController.verifyLogin )
 // userRoute.post('/login', userController.verifyLogin )
 
+// code for logout
+userRoute.get('/logout',adminLoginAuth.isLogin, userController.logout )
+
+
 userRoute.get('/profile', userController.profile) 
-module.exports = userRoute;
+module.exports = userRoute; 
