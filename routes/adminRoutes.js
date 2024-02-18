@@ -31,11 +31,25 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
+const session = require('express-session')
+const config = require('../config/config')
+adminRoute.use(session({
+    secret:config.sessionSecret,
+    resave:true,
+    saveUninitialized:true,
 
+}))
+
+// require middleware
+const adminLoginAuth = require('../middlewares/adminLoginAuth')
 // adminRoute.get('/login', adminController.login )
 adminRoute.get('/blog-setup', adminController.blogSetup);
 adminRoute.post('/blog-setup', upload.single('blog_image'), adminController.blogSetupSave);
 
-adminRoute.get('/dashboard', adminController.dashboard);
+// adminRoute.get('/dashboard', adminController.dashboard);
+adminRoute.get('/dashboard',adminLoginAuth.isLogin, adminController.dashboard);
 
 module.exports = adminRoute;
+
+
+

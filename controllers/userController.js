@@ -16,8 +16,10 @@ const verifyLogin = async (req, res) => {
         console.log(userData)
         if (userData) {
             const passwordMatch = await bcrypt.compare(password, userData.password)
-            req.session.user_id = userData._id;
-            req.session.isAdmin = userData.isAdmin;
+           
+             req.session.user_id = userData._id;
+             req.session.isAdmin = userData.isAdmin;
+          
             if (passwordMatch) { 
                 if (userData.isAdmin == 1) {
                     res.redirect('/dashboard')
