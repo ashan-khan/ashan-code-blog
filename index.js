@@ -13,13 +13,16 @@ app.set('views', './views');
 // app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public')); 
 app.use(isBlog.isBlog)
+
 // For Admin Routes
 const adminRoute = require('./routes/adminRoutes')
 app.use('/', adminRoute) 
-
 // For User Routes
 const userRoute = require('./routes/userRoute')
 app.use('/', userRoute) 
+// For Blog Routes
+const blogRoute = require('./routes/blogRoute')
+app.use('/', blogRoute) 
 
 // specify public directory form to surve sta tic fies
 

@@ -55,9 +55,11 @@ const logout = async (req,res)=>{
         console.log(error.message)
     }
 }
+
 module.exports = {
     loadLogin,
     verifyLogin,
     profile,
-    logout
+    logout,
+
 }
