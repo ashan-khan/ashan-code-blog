@@ -3,7 +3,8 @@ const adminController = require('../controllers/adminController')
 const bodyParser = require('body-parser')
 const adminRoute = express();
 
-
+// require middleware
+const adminLoginAuth = require('../middlewares/adminLoginAuth')
 // set bodyParser used in taking data from Form(textarea).
 adminRoute.use(bodyParser.json());
 adminRoute.use(bodyParser.urlencoded({extended: true}));
@@ -40,14 +41,17 @@ adminRoute.use(session({
 
 }))
 
-// require middleware
-const adminLoginAuth = require('../middlewares/adminLoginAuth')
+
 // adminRoute.get('/login', adminController.login )
 adminRoute.get('/blog-setup', adminController.blogSetup);
 adminRoute.post('/blog-setup', upload.single('blog_image'), adminController.blogSetupSave);
 
 // adminRoute.get('/dashboard', adminController.dashboard);
 adminRoute.get('/dashboard',adminLoginAuth.isLogin, adminController.dashboard);
+
+// route for post 
+adminRoute.get('/create-post', adminLoginAuth.isLogin, adminController.loadPostDashboard)
+adminRoute.post('/create-post', adminLoginAuth.isLogin, adminController.addPost)
 
 module.exports = adminRoute;
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const blogSetting = require('../modules/blogSettingModel');// will in login route
 const user = require('../modules/userModel')
+const post = require('../modules/postModel')
 const adminRoute = require('../routes/adminRoutes');
 const bcrypt = require('bcrypt')// it is used in password encryption
 
@@ -70,8 +71,32 @@ const dashboard = async (req, res)=>{
         console.log(error.message)
     }
 }
+
+// module for creating post
+const loadPostDashboard = async (req,res)=>{
+    try {
+        res.render('admin/postDashboard.ejs')
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const addPost = async (req,res)=>{
+    try {
+         const Post = new post({
+            title:req.body.title,
+            content:req.body.content
+         })
+     const postData= await Post.save()
+       res.render('admin/postDashboard', {message:'Post added successfully!'})
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 module.exports = {
     dashboard,
     blogSetup,
-    blogSetupSave
+    blogSetupSave,
+    loadPostDashboard,
+    addPost
 }
