@@ -1,45 +1,25 @@
 <%- include("../layouts/admin-header.ejs") %>
+<%- include("../layouts/navbar.ejs") %>
+<%- include("../layouts/admin-sidebar.ejs") %>
 <!-- Page Content  -->
- <div id="content" class="p-4 p-md-5 pt-5">
-   <h2 class="mb-4">Add Post</h2>
-    
-   <div class="container">
-       <form action="" method="post">
-           <div class="row">
-               <div class="col-sm-12">
-                   <h5>Title</h5>
-               </div>
-           </div>
-           <div class="row">
-               <div class="col-sm-12">
-                  <input type="text" name="title" required placeholder="Enter post title" class="w-100">
-               </div>
-           </div>
-           <div class="row mt-4">
-               <div class="col-sm-12">
-                   <h5>Content</h5>
-               </div>
-           </div>
-           <div class="row">
-               <div class="col-sm-12">
-                <textarea class="w-100" name="content" id="" placeholder="Enter post content" required rows="10"></textarea>  
-               </div>
-           </div>
-           <div class="row mt-4">
-               <div class="col-sm-12">
-                  <input type="submit"  value="Add Post" class="btn btn-primary">
-               </div>
-           </div>
-       </form>
-       <% 
-            if(typeof message !== 'undefined'){
+<%- include("../layouts/admin-dashboardContent.ejs") %>
+<div class="contact-form">
+    <form action="" method="POST" id="my-form">
+        <h3>Title</h3>
+        <input type="text" name="title" required placeholder="Enter post title" class="w-100">
+        <h3>Content</h3>
+        <textarea name="content" id="" placeholder="Enter post content" required rows="10"></textarea>  
+        
+        <input type="submit" value="Add Post" class="send">        
+    </form>
+    <% 
+    if(typeof message !== 'undefined'){
+%>
+        <p style="color: #eb4a4a;"><%= message %></p>
+        <%
+    }
         %>
-                <p style="color: green;"><%= message %></p>
-                <%
-            }
-                %>
-   </div>
-  </div>
- </div>
+</div>
 
    <%- include("../layouts/admin-footer") %>
+   <%- include("../layouts/footer") %>

@@ -1,7 +1,28 @@
-/*!
-* Start Bootstrap - Small Business v5.0.5 (https://startbootstrap.com/template/small-business)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-small-business/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+const header = document.querySelector("header");
+const dashboardMenu = document.querySelector(".sidebar")
+
+window.addEventListener ("scroll", function() {
+	header.classList.toggle ("sticky", window.scrollY >0);
+});
+window.addEventListener ("scroll", function() {
+	dashboardMenu.classList.toggle ("scroll", window.scrollY >0);
+});
+
+let menu = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () => {
+	menu.classList.toggle('bx-x');
+	navbar.classList.toggle('active');
+};
+
+window.onscroll = () => {
+	menu.classList.remove('bx-x');
+	navbar.classList.remove('active');
+};
+
+const sr = ScrollReveal ({
+	distance: '25px',
+	duration: 1000,
+	reset: true
+})
