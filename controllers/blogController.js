@@ -1,4 +1,12 @@
 const post = require('../modules/postModel')
+const portfolio = async (req, res)=>{
+    try {
+      
+        res.render('index')
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 const loadBlog = async (req, res)=>{
     try {
         const posts = await post.find({})
@@ -8,6 +16,16 @@ const loadBlog = async (req, res)=>{
     }
 }
 
+const loadPost = async (req, res)=>{
+    try {
+       const Post= await post.findOne({ "_id": req.params.id })
+        res.render('post', {post:Post})
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 module.exports ={
-    loadBlog
+    loadBlog,
+    portfolio,
+    loadPost
 }

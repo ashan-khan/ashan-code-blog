@@ -1,0 +1,21 @@
+<%- include("./layouts/header") %>
+<%- include("./layouts/navbar") %>
+<section class="read-post" id="about">
+       <div class="about-img">
+        <!-- <img src="about2.png"> -->
+        <img src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg">
+        <div class="about-text">
+            <!-- <h2>About Me</h2> -->
+            <h4><%= post.title %></h4>
+            <p><%= post.content %></p>
+            <a href="#contact" class="btn">Share</a>
+        </div>
+    </div>
+    
+  <div class="search contact-form">
+    <input type="text" name="search" id="p-search">
+    <input type="submit" value="Search">
+  </div>
+</section>
+
+<%- include("./layouts/footer") %>

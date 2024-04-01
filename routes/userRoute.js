@@ -34,4 +34,6 @@ userRoute.post('/login', userController.verifyLogin )
 userRoute.get('/logout',adminLoginAuth.isLogin, userController.logout )
 
 userRoute.get('/profile', userController.profile) 
+
+userRoute.get('/forget-password', adminLoginAuth.isLogout,  )
 module.exports = userRoute; 
